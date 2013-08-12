@@ -1,9 +1,10 @@
 # -*- encoding: utf-8 -*-
+
 require File.expand_path("../lib/capistrano-beanstalkd/version", __FILE__)
 
 Gem::Specification.new do |gem|
   gem.name        = "capistrano-beanstalkd"
-  gem.version     = Capistranobeanstalkd::VERSION.dup
+  gem.version     = CapistranoBeanstalkd::VERSION.dup
   gem.author      = "Jonathan Jeffus"
   gem.email       = "jjeffus@gmail.com"
   gem.homepage    = "https://github.com/jjeffus/capistrano-beanstalkd"
