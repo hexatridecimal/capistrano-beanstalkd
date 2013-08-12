@@ -6,9 +6,13 @@ module CapistranoBeanstalkd
     def self.load_into(capistrano_config)
       capistrano_config.load do
 
-        _cset(:workers, {"*" => 1})
-        _cset(:beanstalkd_kill_signal, "QUIT")
-        _cset(:interval, "5")
+        def workers
+          {"*" => 1}
+        end
+
+        def interval
+          "5"
+        end
 
         def workers_roles
           return workers.keys if workers.first[1].is_a? Hash
@@ -40,7 +44,7 @@ module CapistranoBeanstalkd
         def stop_command
           "if [ -e #{current_path}/tmp/pids/beanstalkd_work_1.pid ]; then \
            for f in `ls #{current_path}/tmp/pids/beanstalkd_work*.pid`; \
-             do #{try_sudo} kill -s #{beanstalkd_kill_signal} `cat $f` \
+             do #{try_sudo} kill -s QUIT `cat $f` \
              && rm $f ;done \
            ;fi"
         end
